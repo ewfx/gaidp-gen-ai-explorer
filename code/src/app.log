@@ -1,0 +1,44 @@
+2025-03-25 19:13:33,451 - WARNING -  * Debugger is active!
+2025-03-25 19:13:33,467 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 19:13:37,840 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 19:13:40,979 - WARNING -  * Debugger is active!
+2025-03-25 19:13:40,982 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 19:13:56,683 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 19:13:59,344 - WARNING -  * Debugger is active!
+2025-03-25 19:13:59,348 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 19:14:18,752 - INFO - 127.0.0.1 - - [25/Mar/2025 19:14:18] "OPTIONS /generate_rules HTTP/1.1" 200 -
+2025-03-25 19:14:18,764 - INFO - Received request: num_rules=5, file_path=None
+2025-03-25 19:14:18,764 - ERROR - File not found error.
+2025-03-25 19:14:18,765 - INFO - 127.0.0.1 - - [25/Mar/2025 19:14:18] "[31m[1mPOST /generate_rules HTTP/1.1[0m" 400 -
+2025-03-25 19:14:34,731 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 19:14:37,293 - WARNING -  * Debugger is active!
+2025-03-25 19:14:37,296 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 19:14:44,050 - INFO - 127.0.0.1 - - [25/Mar/2025 19:14:44] "OPTIONS /generate_rules HTTP/1.1" 200 -
+2025-03-25 19:14:44,055 - INFO - Received request: num_rules=5, file_path=None
+2025-03-25 19:14:44,055 - ERROR - File not found error.
+2025-03-25 19:14:44,055 - INFO - 127.0.0.1 - - [25/Mar/2025 19:14:44] "[31m[1mPOST /generate_rules HTTP/1.1[0m" 400 -
+2025-03-25 19:15:48,086 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\app.py', reloading
+2025-03-25 19:15:50,512 - WARNING -  * Debugger is active!
+2025-03-25 19:15:50,515 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 19:16:53,476 - INFO - 127.0.0.1 - - [25/Mar/2025 19:16:53] "[31m[1mGET /generate_rules HTTP/1.1[0m" 405 -
+2025-03-25 19:17:03,431 - INFO - 127.0.0.1 - - [25/Mar/2025 19:17:03] "OPTIONS /generate_rules HTTP/1.1" 200 -
+2025-03-25 19:17:03,437 - INFO - Received request: num_rules=5, file_path=None
+2025-03-25 19:17:03,437 - ERROR - File not found error.
+2025-03-25 19:17:03,438 - INFO - 127.0.0.1 - - [25/Mar/2025 19:17:03] "[31m[1mPOST /generate_rules HTTP/1.1[0m" 400 -
+2025-03-25 19:17:14,375 - INFO - 127.0.0.1 - - [25/Mar/2025 19:17:14] "[33mGET / HTTP/1.1[0m" 404 -
+2025-03-25 19:17:14,915 - INFO - 127.0.0.1 - - [25/Mar/2025 19:17:14] "[33mGET / HTTP/1.1[0m" 404 -
+2025-03-25 19:17:17,118 - INFO - 127.0.0.1 - - [25/Mar/2025 19:17:17] "[33mGET / HTTP/1.1[0m" 404 -
+2025-03-25 19:18:04,333 - INFO - 127.0.0.1 - - [25/Mar/2025 19:18:04] "[33mGET / HTTP/1.1[0m" 404 -
+2025-03-25 19:18:04,721 - INFO - 127.0.0.1 - - [25/Mar/2025 19:18:04] "[33mGET / HTTP/1.1[0m" 404 -
+2025-03-25 19:18:28,790 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 19:18:31,771 - WARNING -  * Debugger is active!
+2025-03-25 19:18:31,775 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 19:18:45,672 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 19:18:49,630 - WARNING -  * Debugger is active!
+2025-03-25 19:18:49,635 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 19:18:49,688 - INFO - 127.0.0.1 - - [25/Mar/2025 19:18:49] "GET / HTTP/1.1" 200 -
+2025-03-25 19:19:13,992 - INFO - 127.0.0.1 - - [25/Mar/2025 19:19:13] "OPTIONS /generate_rules HTTP/1.1" 200 -
+2025-03-25 19:19:13,998 - INFO - Received request: num_rules=5, file_path=None
+2025-03-25 19:19:13,998 - ERROR - File not found error.
+2025-03-25 19:19:13,998 - INFO - 127.0.0.1 - - [25/Mar/2025 19:19:13] "[31m[1mPOST /generate_rules HTTP/1.1[0m" 400 -
+2025-03-25 19:20:42,599 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading

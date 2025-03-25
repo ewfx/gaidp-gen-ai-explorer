@@ -1,0 +1,15 @@
+2025-03-25 20:12:51,660 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 20:12:56,685 - WARNING -  * Debugger is active!
+2025-03-25 20:12:56,688 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 20:13:01,818 - INFO - 127.0.0.1 - - [25/Mar/2025 20:13:01] "OPTIONS /generate_rules HTTP/1.1" 200 -
+2025-03-25 20:13:01,822 - INFO - Received request: num_rules=5, file_path=C:\Users\Munes\PycharmProjects\Hackathon_Gen_AI_Explorer\data\genAI_Data.xlsx
+2025-03-25 20:13:01,822 - INFO - Reading Excel file: C:\Users\Munes\PycharmProjects\Hackathon_Gen_AI_Explorer\data\genAI_Data.xlsx
+2025-03-25 20:13:02,001 - INFO - Extracted columns: ['Field Name; (Technical Field Name)', 'MDRM', 'Description', 'Allowable Values']
+2025-03-25 20:13:09,415 - INFO - Successfully generated 5 rules.
+2025-03-25 20:13:09,416 - INFO - 127.0.0.1 - - [25/Mar/2025 20:13:09] "POST /generate_rules HTTP/1.1" 200 -
+2025-03-25 20:13:21,171 - INFO - 127.0.0.1 - - [25/Mar/2025 20:13:21] "OPTIONS /generate_rules HTTP/1.1" 200 -
+2025-03-25 20:13:21,176 - INFO - Received request: num_rules=5, file_path=C:\Users\Munes\PycharmProjects\Hackathon_Gen_AI_Explorer\data\genAI_Data.xlsx
+2025-03-25 20:13:21,176 - INFO - Reading Excel file: C:\Users\Munes\PycharmProjects\Hackathon_Gen_AI_Explorer\data\genAI_Data.xlsx
+2025-03-25 20:13:21,401 - INFO - Extracted columns: ['Field Name; (Technical Field Name)', 'MDRM', 'Description', 'Allowable Values']
+2025-03-25 20:13:25,454 - INFO - Successfully generated 5 rules.
+2025-03-25 20:13:25,455 - INFO - 127.0.0.1 - - [25/Mar/2025 20:13:25] "POST /generate_rules HTTP/1.1" 200 -
