@@ -1,10 +1,12 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify,send_file
 import pandas as pd
 import os
 import google.generativeai as genai
 import logging
 from flask_cors import CORS
 import json  # Add this at the top
+import re
+from rapidfuzz import fuzz, process
 
 # Configure logging
 logging.basicConfig(
@@ -16,7 +18,7 @@ logging.basicConfig(
 app = Flask(__name__)
 CORS(app)
 # Configure Gemini API
-genai.configure(api_key="AIzaSyC53wvzp-W7_IH_xrVjM0W8w6ywy8h8Op8")
+genai.configure(api_key="AIzaSyDGHu1_exPZmOuvqvnjZyjMa5ve9v8tSbQ")
 model = genai.GenerativeModel("gemini-1.5-pro")
 
 def get_excel_data(file_path):
@@ -100,5 +102,144 @@ def generate_rules_api():
         logging.error(f"Unexpected error: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
+
+@app.route('/filter_data', methods=['GET'])
+def filter_data_api():
+    try:
+
+        file_path = request.args.get('file')
+        if not file_path:
+            return jsonify({"error": "No file provided"}), 400
+
+        if not os.path.exists(file_path):
+            return jsonify({"error": "File not found"}), 400
+
+        # Load rules from 'rules' sheet
+        try:
+            df_rules = pd.read_excel(file_path, sheet_name='rules')
+        except ValueError:
+            return jsonify({"error": "Please generate rules first."}), 400
+
+        # Validate rules data
+        if df_rules.empty or 'Rule Name' not in df_rules.columns or 'Description' not in df_rules.columns:
+            return jsonify({"error": "Please generate rules first."}), 400
+
+        # Convert rules to JSON format
+        rules = df_rules[['Rule Name', 'Description']].to_dict(orient='records')
+
+        # Load main dataset (first sheet)
+        df = pd.read_excel(file_path, sheet_name=0)
+
+        # Construct filtering prompt for Gemini
+        prompt = f"""
+        You are an expert in data validation. Based on the following rules, filter the dataset and return only rows that match the criteria.
+
+        Rules:
+        {json.dumps(rules, indent=2)}
+
+        Dataset:
+        {df.head(10).to_dict(orient='records')}  # Sending first 10 rows for Gemini analysis
+
+        Instructions:
+        - Apply the rules to filter the dataset.
+        - Keep all existing columns in the original dataset.
+        - Return the results as JSON in the format: {{ "columns": [...], "data": [...] }}
+        """
+
+        # Call Gemini to process filtering
+        response = model.generate_content(prompt)
+
+        if response and response.candidates:
+            try:
+                # Extract JSON response from Gemini
+                filtered_text = response.candidates[0].content.parts[0].text.strip()
+
+                # Handle potential markdown artifacts
+                if filtered_text.startswith("```json"):
+                    filtered_text = filtered_text[7:].strip("```")
+                logging.warning(f"munesh 1.{filtered_text}")
+
+                filtered_data = json.loads(filtered_text)
+
+                # Convert filtered data to DataFrame
+                df_filtered = pd.DataFrame(filtered_data["data"])
+                logging.warning(f"munesh 2.{df_filtered}")
+                # Ensure all values are strings and strip whitespace
+                df_filtered = df_filtered.fillna("").astype(str).apply(
+                    lambda col: col.map(lambda x: x.strip() if isinstance(x, str) else x))
+
+                # Prepare response format
+                columns = df_filtered.columns.tolist()
+                data = df_filtered.to_dict(orient='records')
+
+                return jsonify({"columns": columns, "data": data})
+
+            except json.JSONDecodeError as e:
+                return jsonify({"error": f"JSON parsing error: {e}"}), 500
+
+        return jsonify({"error": "No valid response from Gemini"}), 500
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# Function to check fuzzy match
+def fuzzy_match(text, rules, threshold=50):
+    if pd.isna(text) or not rules:
+        return False
+    best_match = process.extractOne(text, rules, scorer=fuzz.partial_ratio)
+    return best_match and best_match[1] >= threshold  # Check if similarity is above threshold
+
+
+@app.route('/filter-excel1', methods=['GET'])
+def filter_excel1():
+    try:
+        # Get JSON request data
+        #data = request.get_json()
+
+        # Get rules from request, default to an empty list
+        #rules = data.get("rules", [])
+        #if not rules:
+            #return jsonify({"error": "No rules provided"}), 400
+
+        # Load Excel file
+        file_path = request.args.get('file') # Change this to your actual file path
+
+        try:
+            df_rules = pd.read_excel(file_path, sheet_name='rules')
+
+        except ValueError:
+            return jsonify({"error": "Please generate rules first."}), 400
+
+        df = pd.read_excel(file_path,sheet_name=0)
+        rules = df_rules.iloc[:, 1].dropna().astype(str).tolist()  # Extract second column as rules
+
+        column_name1 = df.columns[2]
+        column_name2 = df.columns[3]
+        # Apply fuzzy matching
+        filtered_df = df[df[column_name1].apply(lambda x: fuzzy_match(x, rules))]
+
+        output_file = "filtered_data.xlsx"
+        filtered_df.to_excel(output_file, index=False)
+
+        # Return the filtered data as JSON
+        send_file(output_file, as_attachment=True)
+
+        file_path = os.path.join(os.path.dirname(__file__), "filtered_data.xlsx")
+        if not os.path.exists(file_path):
+            print("File not found!")
+        else:
+            df1 = pd.read_excel(file_path, sheet_name=0)
+
+        if df1.empty:
+            return jsonify([])
+
+        df1 = df1.fillna("").astype(str).apply(
+            lambda col: col.map(lambda x: x.strip() if isinstance(x, str) else x))  # Replace NaN with empty string
+        columns = df1.columns.tolist()
+        data = df1.to_dict(orient='records')  # Convert data to JSON
+        return jsonify({"columns": columns, "data": data})  # Send both columns and data
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 if __name__ == '__main__':
     app.run(port=5001, debug=True)

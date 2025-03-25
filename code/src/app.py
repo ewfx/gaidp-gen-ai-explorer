@@ -5,10 +5,17 @@ import pandas as pd
 from werkzeug.utils import secure_filename
 import os
 import threading
+import logging
 
+# Configure logging
+logging.basicConfig(
+    filename="flask_app.log",  # Log file name
+    level=logging.INFO,  # Log level (DEBUG, INFO, WARNING, ERROR)
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 # Configure Gemini AI
-GEMINI_API_KEY = "AIzaSyC53wvzp-W7_IH_xrVjM0W8w6ywy8h8Op8"
+GEMINI_API_KEY = "AIzaSyDGHu1_exPZmOuvqvnjZyjMa5ve9v8tSbQ"
 genai.configure(api_key=GEMINI_API_KEY)
 
 app = Flask(__name__)
@@ -96,6 +103,10 @@ def new_rule():
 def chatbot():
     return render_template('chatbot.html')
 
+@app.route('/datawithrules.html')
+def data_with_rules():
+    return render_template('datawithrules.html')
+
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
@@ -116,26 +127,17 @@ def upload_file():
 @app.route('/data')
 def get_data():
     try:
-        #df = pd.read_excel(file_path, dtype=str)  # Read as string to avoid NaN issues
         if not os.path.exists(file_path):
             print("File not found!")
         else:
             df = read_file(file_path)
-            #print("Data preview:\n", df.head())
 
         if df.empty:
-            return jsonify([])  # Return empty list if no data
+            return jsonify([])
 
-        # Get column names dynamically
-       # column_order = df.columns.tolist()  # Read column names in order
-
-       # df = df[column_order]  # Preserve the order from Excel
         df = df.fillna("").astype(str).apply(lambda col: col.map(lambda x: x.strip() if isinstance(x, str) else x)) # Replace NaN with empty string
-        #print(df.head())
-        #return jsonify(df.to_dict(orient='records'))  # Convert to JSON with correct order
         columns = df.columns.tolist()
         data = df.to_dict(orient='records')  # Convert data to JSON
-
         return jsonify({"columns": columns, "data": data})  # Send both columns and data
     except Exception as e:
         return jsonify({"error": str(e)})
@@ -148,6 +150,36 @@ def get_excel_templates():
         for f in os.listdir(EXCEL_DIR) if f.endswith((".xlsx", ".xls",".csv"))
     ]
     return jsonify(files)
+
+@app.route("/get-rules")
+def get_rules():
+    """Fetch rules from the 'rules' sheet in the selected Excel file."""
+    file_path = request.args.get("file")
+    logging.info(f"file_path: {file_path}")
+
+    if not file_path or not os.path.exists(file_path):
+        return jsonify({"error": "File not found"}), 400
+
+    try:
+        # Read Excel file
+        xls = pd.ExcelFile(file_path)
+
+        # Check if "rules" sheet exists
+        if "rules" not in xls.sheet_names:
+            return jsonify({"error": "Rules are not generated, please generate first"}), 404
+
+        df = pd.read_excel(xls, sheet_name="rules")
+
+        if df.empty:
+            return jsonify({"error": "Rules sheet is empty"}), 404
+
+        return jsonify({
+            "columns": df.columns.tolist(),
+            "rows": df.values.tolist()
+        })
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(port=5000,debug=True)

@@ -1,15 +1,185 @@
-2025-03-25 20:12:51,660 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
-2025-03-25 20:12:56,685 - WARNING -  * Debugger is active!
-2025-03-25 20:12:56,688 - INFO -  * Debugger PIN: 991-166-940
-2025-03-25 20:13:01,818 - INFO - 127.0.0.1 - - [25/Mar/2025 20:13:01] "OPTIONS /generate_rules HTTP/1.1" 200 -
-2025-03-25 20:13:01,822 - INFO - Received request: num_rules=5, file_path=C:\Users\Munes\PycharmProjects\Hackathon_Gen_AI_Explorer\data\genAI_Data.xlsx
-2025-03-25 20:13:01,822 - INFO - Reading Excel file: C:\Users\Munes\PycharmProjects\Hackathon_Gen_AI_Explorer\data\genAI_Data.xlsx
-2025-03-25 20:13:02,001 - INFO - Extracted columns: ['Field Name; (Technical Field Name)', 'MDRM', 'Description', 'Allowable Values']
-2025-03-25 20:13:09,415 - INFO - Successfully generated 5 rules.
-2025-03-25 20:13:09,416 - INFO - 127.0.0.1 - - [25/Mar/2025 20:13:09] "POST /generate_rules HTTP/1.1" 200 -
-2025-03-25 20:13:21,171 - INFO - 127.0.0.1 - - [25/Mar/2025 20:13:21] "OPTIONS /generate_rules HTTP/1.1" 200 -
-2025-03-25 20:13:21,176 - INFO - Received request: num_rules=5, file_path=C:\Users\Munes\PycharmProjects\Hackathon_Gen_AI_Explorer\data\genAI_Data.xlsx
-2025-03-25 20:13:21,176 - INFO - Reading Excel file: C:\Users\Munes\PycharmProjects\Hackathon_Gen_AI_Explorer\data\genAI_Data.xlsx
-2025-03-25 20:13:21,401 - INFO - Extracted columns: ['Field Name; (Technical Field Name)', 'MDRM', 'Description', 'Allowable Values']
-2025-03-25 20:13:25,454 - INFO - Successfully generated 5 rules.
-2025-03-25 20:13:25,455 - INFO - 127.0.0.1 - - [25/Mar/2025 20:13:25] "POST /generate_rules HTTP/1.1" 200 -
+2025-03-25 23:30:38,030 - INFO - 127.0.0.1 - - [25/Mar/2025 23:30:38] "GET /datawithrules.html?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:30:38,472 - WARNING - munesh 11.CUSIP Number (if provided) must be exactly 6 di...
+Obligor Name must not contain carriage return, ...
+Customer ID must not contain carriage return, l...
+Internal ID must not contain carriage return, l...
+If CUSIP Number is provided, it must be a valid...
+2025-03-25 23:30:38,880 - INFO - 127.0.0.1 - - [25/Mar/2025 23:30:38] "GET /filter-excel1?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:32:25,569 - INFO - 127.0.0.1 - - [25/Mar/2025 23:32:25] "GET /data_rules HTTP/1.1" 200 -
+2025-03-25 23:32:25,646 - INFO - 127.0.0.1 - - [25/Mar/2025 23:32:25] "GET /chatbot HTTP/1.1" 200 -
+2025-03-25 23:32:26,657 - INFO - 127.0.0.1 - - [25/Mar/2025 23:32:26] "GET /new_rule HTTP/1.1" 200 -
+2025-03-25 23:32:27,714 - INFO - 127.0.0.1 - - [25/Mar/2025 23:32:27] "GET /get-excel-templates HTTP/1.1" 200 -
+2025-03-25 23:32:28,696 - INFO - file_path: C:\Users\Munes\PycharmProjects\Hackathon_Gen_AI_Explorer\data\genAI_Data.xlsx
+2025-03-25 23:32:28,711 - INFO - 127.0.0.1 - - [25/Mar/2025 23:32:28] "GET /get-rules?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:35:37,364 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:35:37,371 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:35:37,816 - INFO -  * Restarting with stat
+2025-03-25 23:35:37,816 - INFO -  * Restarting with stat
+2025-03-25 23:35:44,395 - WARNING -  * Debugger is active!
+2025-03-25 23:35:44,407 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:35:46,190 - WARNING -  * Debugger is active!
+2025-03-25 23:35:46,193 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:35:46,298 - INFO - 127.0.0.1 - - [25/Mar/2025 23:35:46] "GET /datawithrules.html?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:35:46,930 - WARNING - munesh 11.CUSIP Number (if provided) must be exactly 6 di...
+Obligor Name must not contain carriage return, ...
+Customer ID must not contain carriage return, l...
+Internal ID must not contain carriage return, l...
+If CUSIP Number is provided, it must be a valid...
+2025-03-25 23:35:46,970 - INFO - 127.0.0.1 - - [25/Mar/2025 23:35:46] "[35m[1mGET /filter-excel1?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1[0m" 500 -
+2025-03-25 23:36:29,901 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:36:30,144 - INFO -  * Restarting with stat
+2025-03-25 23:36:30,308 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:36:30,626 - INFO -  * Restarting with stat
+2025-03-25 23:36:33,569 - WARNING -  * Debugger is active!
+2025-03-25 23:36:33,573 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:36:33,612 - WARNING -  * Debugger is active!
+2025-03-25 23:36:33,618 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:38:39,431 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:38:39,463 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:38:39,759 - INFO -  * Restarting with stat
+2025-03-25 23:38:39,802 - INFO -  * Restarting with stat
+2025-03-25 23:38:42,687 - WARNING -  * Debugger is active!
+2025-03-25 23:38:42,692 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:38:42,963 - WARNING -  * Debugger is active!
+2025-03-25 23:38:42,968 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:38:43,036 - INFO - 127.0.0.1 - - [25/Mar/2025 23:38:43] "GET /datawithrules.html?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:38:43,512 - WARNING - munesh 11.CUSIP Number (if provided) must be exactly 6 di...
+Obligor Name must not contain carriage return, ...
+Customer ID must not contain carriage return, l...
+Internal ID must not contain carriage return, l...
+If CUSIP Number is provided, it must be a valid...
+2025-03-25 23:38:43,759 - INFO - 127.0.0.1 - - [25/Mar/2025 23:38:43] "GET /filter-excel1?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:39:22,614 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:39:22,661 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:39:22,972 - INFO -  * Restarting with stat
+2025-03-25 23:39:23,016 - INFO -  * Restarting with stat
+2025-03-25 23:39:25,772 - WARNING -  * Debugger is active!
+2025-03-25 23:39:25,779 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:39:26,187 - WARNING -  * Debugger is active!
+2025-03-25 23:39:26,192 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:39:26,975 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:39:27,202 - INFO -  * Restarting with stat
+2025-03-25 23:39:27,345 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:39:27,644 - INFO -  * Restarting with stat
+2025-03-25 23:39:30,257 - WARNING -  * Debugger is active!
+2025-03-25 23:39:30,263 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:39:30,978 - WARNING -  * Debugger is active!
+2025-03-25 23:39:30,982 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:39:31,040 - INFO - 127.0.0.1 - - [25/Mar/2025 23:39:31] "GET /datawithrules.html?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:39:31,504 - WARNING - munesh 11.CUSIP Number (if provided) must be exactly 6 di...
+Obligor Name must not contain carriage return, ...
+Customer ID must not contain carriage return, l...
+Internal ID must not contain carriage return, l...
+If CUSIP Number is provided, it must be a valid...
+2025-03-25 23:39:31,610 - INFO - 127.0.0.1 - - [25/Mar/2025 23:39:31] "GET /filter-excel1?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:40:09,875 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:40:10,117 - INFO -  * Restarting with stat
+2025-03-25 23:40:10,531 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:40:10,782 - INFO -  * Restarting with stat
+2025-03-25 23:40:12,995 - WARNING -  * Debugger is active!
+2025-03-25 23:40:13,000 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:40:13,839 - WARNING -  * Debugger is active!
+2025-03-25 23:40:13,843 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:40:13,887 - INFO - 127.0.0.1 - - [25/Mar/2025 23:40:13] "GET /datawithrules.html?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:40:14,409 - WARNING - munesh 11.CUSIP Number (if provided) must be exactly 6 di...
+Obligor Name must not contain carriage return, ...
+Customer ID must not contain carriage return, l...
+Internal ID must not contain carriage return, l...
+If CUSIP Number is provided, it must be a valid...
+2025-03-25 23:40:14,645 - INFO - 127.0.0.1 - - [25/Mar/2025 23:40:14] "GET /filter-excel1?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:40:57,296 - INFO - 127.0.0.1 - - [25/Mar/2025 23:40:57] "GET /dashboard HTTP/1.1" 200 -
+2025-03-25 23:40:57,540 - INFO - 127.0.0.1 - - [25/Mar/2025 23:40:57] "GET /data HTTP/1.1" 200 -
+2025-03-25 23:42:11,609 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:42:11,841 - INFO -  * Restarting with stat
+2025-03-25 23:42:11,935 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:42:12,218 - INFO -  * Restarting with stat
+2025-03-25 23:42:14,631 - WARNING -  * Debugger is active!
+2025-03-25 23:42:14,637 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:42:15,345 - WARNING -  * Debugger is active!
+2025-03-25 23:42:15,348 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:42:17,397 - INFO - 127.0.0.1 - - [25/Mar/2025 23:42:17] "GET /datawithrules.html?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:42:17,980 - WARNING - munesh 11.CUSIP Number (if provided) must be exactly 6 di...
+Obligor Name must not contain carriage return, ...
+Customer ID must not contain carriage return, l...
+Internal ID must not contain carriage return, l...
+If CUSIP Number is provided, it must be a valid...
+2025-03-25 23:42:18,113 - INFO - 127.0.0.1 - - [25/Mar/2025 23:42:18] "GET /filter-excel1?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:42:40,172 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:42:40,437 - INFO -  * Restarting with stat
+2025-03-25 23:42:40,831 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:42:41,118 - INFO -  * Restarting with stat
+2025-03-25 23:42:43,783 - WARNING -  * Debugger is active!
+2025-03-25 23:42:43,788 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:42:43,867 - INFO - 127.0.0.1 - - [25/Mar/2025 23:42:43] "GET /datawithrules.html?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:42:44,245 - WARNING -  * Debugger is active!
+2025-03-25 23:42:44,249 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:42:44,607 - WARNING - munesh 11.CUSIP Number (if provided) must be exactly 6 di...
+Obligor Name must not contain carriage return, ...
+Customer ID must not contain carriage return, l...
+Internal ID must not contain carriage return, l...
+If CUSIP Number is provided, it must be a valid...
+2025-03-25 23:42:44,761 - INFO - 127.0.0.1 - - [25/Mar/2025 23:42:44] "GET /filter-excel1?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:43:03,963 - INFO - 127.0.0.1 - - [25/Mar/2025 23:43:03] "GET /datawithrules.html?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:43:04,111 - WARNING - munesh 11.CUSIP Number (if provided) must be exactly 6 di...
+Obligor Name must not contain carriage return, ...
+Customer ID must not contain carriage return, l...
+Internal ID must not contain carriage return, l...
+If CUSIP Number is provided, it must be a valid...
+2025-03-25 23:43:04,310 - INFO - 127.0.0.1 - - [25/Mar/2025 23:43:04] "GET /filter-excel1?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:43:30,493 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:43:30,731 - INFO -  * Restarting with stat
+2025-03-25 23:43:30,791 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:43:31,071 - INFO -  * Restarting with stat
+2025-03-25 23:43:33,449 - WARNING -  * Debugger is active!
+2025-03-25 23:43:33,453 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:43:34,072 - WARNING -  * Debugger is active!
+2025-03-25 23:43:34,074 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:43:34,576 - INFO - 127.0.0.1 - - [25/Mar/2025 23:43:34] "GET /datawithrules.html?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:43:35,019 - WARNING - munesh 11.CUSIP Number (if provided) must be exactly 6 di...
+Obligor Name must not contain carriage return, ...
+Customer ID must not contain carriage return, l...
+Internal ID must not contain carriage return, l...
+If CUSIP Number is provided, it must be a valid...
+2025-03-25 23:43:35,186 - INFO - 127.0.0.1 - - [25/Mar/2025 23:43:35] "GET /filter-excel1?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:44:32,067 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:44:32,312 - INFO -  * Restarting with stat
+2025-03-25 23:44:32,863 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:44:33,125 - INFO -  * Restarting with stat
+2025-03-25 23:44:35,173 - WARNING -  * Debugger is active!
+2025-03-25 23:44:35,177 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:44:36,284 - WARNING -  * Debugger is active!
+2025-03-25 23:44:36,290 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:44:40,589 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:44:40,602 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:44:40,879 - INFO -  * Restarting with stat
+2025-03-25 23:44:40,899 - INFO -  * Restarting with stat
+2025-03-25 23:44:43,368 - WARNING -  * Debugger is active!
+2025-03-25 23:44:43,371 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:44:43,600 - WARNING -  * Debugger is active!
+2025-03-25 23:44:43,605 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:46:02,272 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\app.py', reloading
+2025-03-25 23:46:02,725 - INFO -  * Restarting with stat
+2025-03-25 23:46:02,906 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\app.py', reloading
+2025-03-25 23:46:03,309 - INFO -  * Restarting with stat
+2025-03-25 23:46:06,819 - WARNING -  * Debugger is active!
+2025-03-25 23:46:06,823 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:46:06,825 - WARNING -  * Debugger is active!
+2025-03-25 23:46:06,832 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:48:26,842 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:48:27,057 - INFO -  * Restarting with stat
+2025-03-25 23:48:27,140 - INFO -  * Detected change in 'C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\Rules_Generator.py', reloading
+2025-03-25 23:48:27,442 - INFO -  * Restarting with stat
+2025-03-25 23:48:30,024 - WARNING -  * Debugger is active!
+2025-03-25 23:48:30,029 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:48:30,652 - WARNING -  * Debugger is active!
+2025-03-25 23:48:30,656 - INFO -  * Debugger PIN: 991-166-940
+2025-03-25 23:48:31,091 - INFO - 127.0.0.1 - - [25/Mar/2025 23:48:31] "GET /datawithrules.html?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:48:31,723 - INFO - 127.0.0.1 - - [25/Mar/2025 23:48:31] "GET /filter-excel1?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:48:47,878 - INFO - 127.0.0.1 - - [25/Mar/2025 23:48:47] "GET /new_rule HTTP/1.1" 200 -
+2025-03-25 23:48:48,983 - INFO - 127.0.0.1 - - [25/Mar/2025 23:48:48] "GET /get-excel-templates HTTP/1.1" 200 -
+2025-03-25 23:48:49,966 - INFO - file_path: C:\Users\Munes\PycharmProjects\Hackathon_Gen_AI_Explorer\data\genAI_Data.xlsx
+2025-03-25 23:48:49,989 - INFO - 127.0.0.1 - - [25/Mar/2025 23:48:49] "GET /get-rules?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:48:51,182 - INFO - 127.0.0.1 - - [25/Mar/2025 23:48:51] "GET /datawithrules.html?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:48:51,543 - INFO - 127.0.0.1 - - [25/Mar/2025 23:48:51] "GET /filter-excel1?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:49:18,264 - INFO - 127.0.0.1 - - [25/Mar/2025 23:49:18] "GET /datawithrules.html?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-25 23:49:18,764 - INFO - 127.0.0.1 - - [25/Mar/2025 23:49:18] "GET /filter-excel1?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
