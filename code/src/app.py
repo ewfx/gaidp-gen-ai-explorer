@@ -42,7 +42,7 @@ def read_file(file_path):
             except UnicodeDecodeError:
                 print("⚠ UnicodeDecodeError: Retrying with 'ISO-8859-1' encoding...")
                 df = pd.read_csv(file_path, encoding='ISO-8859-1', engine='python')
-        elif file_path.endswith(('.xls', '.xlsx','.csv')):
+        elif file_path.endswith(('.xls', '.xlsx')):
             try:
                 df = pd.read_excel(file_path, engine='openpyxl')  # For XLSX files
             except ImportError:
@@ -85,11 +85,6 @@ def home():
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/data_rules')
-def data_rules():
-    return render_template('data_rules.html')
-
-
 @app.route('/upload_file')
 def upload_file_page():
     return render_template('upload_file.html')
@@ -106,6 +101,10 @@ def chatbot():
 @app.route('/datawithrules.html')
 def data_with_rules():
     return render_template('datawithrules.html')
+
+@app.route('/data_rules')
+def data_rules():
+    return render_template('data_rules.html')
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
@@ -127,6 +126,7 @@ def upload_file():
 @app.route('/data')
 def get_data():
     try:
+        file_path = request.args.get("file")
         if not os.path.exists(file_path):
             print("File not found!")
         else:

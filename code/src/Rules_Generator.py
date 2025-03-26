@@ -7,6 +7,8 @@ from flask_cors import CORS
 import json  # Add this at the top
 import re
 from rapidfuzz import fuzz, process
+import json
+import csv
 
 # Configure logging
 logging.basicConfig(
@@ -22,15 +24,37 @@ genai.configure(api_key="AIzaSyDGHu1_exPZmOuvqvnjZyjMa5ve9v8tSbQ")
 model = genai.GenerativeModel("gemini-1.5-pro")
 
 def get_excel_data(file_path):
-    """Extract column names and sample data from the given Excel file."""
-    logging.info(f"Reading Excel file: {file_path}")
-    df = pd.read_excel(file_path, sheet_name=0)  # Read first sheet
-    logging.info(f"Extracted columns: {df.columns.tolist()}")
-    return df.columns.tolist(), df.sample(min(5, len(df))).to_dict(orient='records')  # Sample data (max 5 rows)
-
-
-import json
-
+    try:
+        if file_path.endswith('.csv'):
+            try:
+                # Detect delimiter
+                with open(file_path, 'r', encoding='utf-8', errors='ignore') as file:
+                    sample = file.read(1024)  # Read a small chunk to analyze
+                    file.seek(0)  # Reset pointer
+                    try:
+                        dialect = csv.Sniffer().sniff(sample)
+                        delimiter = dialect.delimiter
+                    except csv.Error:
+                        delimiter = ','  # Default to comma if detection fails
+                df = pd.read_csv(file_path,encoding='utf-8', engine='python')
+                return df.columns.tolist(), df.sample(min(10, len(df))).to_dict(
+                    orient='records')  # Sample data (max 10 rows)
+            except UnicodeDecodeError:
+                print("⚠ UnicodeDecodeError: Retrying with 'ISO-8859-1' encoding...")
+                df = pd.read_csv(file_path,sheet_name=0, encoding='ISO-8859-1', engine='python', delimiter=delimiter)
+        elif file_path.endswith(('.xls', '.xlsx', '.csv')):
+            try:
+                df = pd.read_excel(file_path,sheet_name=0, engine='openpyxl')  # For XLSX files
+                return df.columns.tolist(), df.sample(min(10, len(df))).to_dict(
+                    orient='records')  # Sample data (max 10 rows)
+            except ImportError:
+                print("⚠ 'openpyxl' not found! Trying 'xlrd' for older Excel formats...")
+                df = pd.read_excel(file_path,sheet_name=0, engine='xlrd')  # For older XLS files
+        else:
+            raise ValueError("❌ Unsupported file format. Please provide a CSV or Excel file.")
+    except Exception as e:
+        print(f"❌ Error reading file: {e}")
+        return None
 
 def generate_rules_gemini(columns, sample_data, num_rules):
     """Use Gemini LLM to generate validation rules based on column names and sample data."""
@@ -69,7 +93,7 @@ def generate_rules_api():
     try:
         # Read parameters
         request_data = request.json
-        num_rules = int(request_data.get('num_rules', 5))
+        num_rules = int(request_data.get('ruleCount', 5))
         file_path = request_data.get('excelTemplate')
 
         logging.info(f"Received request: num_rules={num_rules}, file_path={file_path}")
@@ -157,13 +181,13 @@ def filter_data_api():
                 # Handle potential markdown artifacts
                 if filtered_text.startswith("```json"):
                     filtered_text = filtered_text[7:].strip("```")
-                logging.warning(f"munesh 1.{filtered_text}")
+
 
                 filtered_data = json.loads(filtered_text)
 
                 # Convert filtered data to DataFrame
                 df_filtered = pd.DataFrame(filtered_data["data"])
-                logging.warning(f"munesh 2.{df_filtered}")
+
                 # Ensure all values are strings and strip whitespace
                 df_filtered = df_filtered.fillna("").astype(str).apply(
                     lambda col: col.map(lambda x: x.strip() if isinstance(x, str) else x))
