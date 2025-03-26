@@ -217,14 +217,6 @@ def fuzzy_match(text, rules, threshold=50):
 @app.route('/filter-excel1', methods=['GET'])
 def filter_excel1():
     try:
-        # Get JSON request data
-        #data = request.get_json()
-
-        # Get rules from request, default to an empty list
-        #rules = data.get("rules", [])
-        #if not rules:
-            #return jsonify({"error": "No rules provided"}), 400
-
         # Load Excel file
         file_path = request.args.get('file') # Change this to your actual file path
 
@@ -240,7 +232,7 @@ def filter_excel1():
         column_name1 = df.columns[2]
         column_name2 = df.columns[3]
         # Apply fuzzy matching
-        filtered_df = df[df[column_name1].apply(lambda x: fuzzy_match(x, rules))]
+        filtered_df = df[df["Description"].apply(lambda x: fuzzy_match(x, rules))]
 
         output_file = "filtered_data.xlsx"
         filtered_df.to_excel(output_file, index=False)
