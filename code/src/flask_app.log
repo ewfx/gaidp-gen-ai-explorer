@@ -349,3 +349,43 @@
 2025-03-26 17:45:37,513 - INFO - 127.0.0.1 - - [26/Mar/2025 17:45:37] "GET / HTTP/1.1" 200 -
 2025-03-26 17:49:11,949 - INFO - 127.0.0.1 - - [26/Mar/2025 17:49:11] "GET /dashboard HTTP/1.1" 200 -
 2025-03-26 17:49:12,232 - INFO - 127.0.0.1 - - [26/Mar/2025 17:49:12] "GET /get-excel-templates HTTP/1.1" 200 -
+2025-03-26 17:52:53,016 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-26 17:52:53,016 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-26 17:52:53,018 - INFO -  * Restarting with stat
+2025-03-26 17:52:55,027 - WARNING -  * Debugger is active!
+2025-03-26 17:52:55,040 - INFO -  * Debugger PIN: 991-166-940
+2025-03-26 17:53:04,668 - INFO - 127.0.0.1 - - [26/Mar/2025 17:53:04] "GET /dashboard HTTP/1.1" 200 -
+2025-03-26 17:53:04,718 - INFO - 127.0.0.1 - - [26/Mar/2025 17:53:04] "GET /get-excel-templates HTTP/1.1" 200 -
+2025-03-26 17:53:05,428 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-03-26 17:53:05,428 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-26 17:53:05,430 - INFO -  * Restarting with stat
+2025-03-26 17:53:06,736 - INFO - 127.0.0.1 - - [26/Mar/2025 17:53:06] "GET /data?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-26 17:53:07,389 - WARNING -  * Debugger is active!
+2025-03-26 17:53:07,392 - INFO -  * Debugger PIN: 991-166-940
+2025-03-26 17:59:10,521 - INFO - 127.0.0.1 - - [26/Mar/2025 17:59:10] "GET /upload_file HTTP/1.1" 200 -
+2025-03-26 17:59:33,556 - INFO - 127.0.0.1 - - [26/Mar/2025 17:59:33] "GET /new_rule HTTP/1.1" 200 -
+2025-03-26 17:59:33,580 - INFO - 127.0.0.1 - - [26/Mar/2025 17:59:33] "GET /chatbot HTTP/1.1" 200 -
+2025-03-26 17:59:34,620 - INFO - 127.0.0.1 - - [26/Mar/2025 17:59:34] "GET /get-excel-templates HTTP/1.1" 200 -
+2025-03-26 17:59:34,639 - INFO - 127.0.0.1 - - [26/Mar/2025 17:59:34] "GET /get-excel-templates HTTP/1.1" 200 -
+2025-03-26 17:59:36,521 - INFO - file_path: C:\Users\Munes\PycharmProjects\Hackathon_Gen_AI_Explorer\data\genAI_Data.xlsx
+2025-03-26 17:59:36,535 - INFO - 127.0.0.1 - - [26/Mar/2025 17:59:36] "GET /get-rules?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-26 18:00:21,034 - INFO - 127.0.0.1 - - [26/Mar/2025 18:00:21] "GET /new_rule HTTP/1.1" 200 -
+2025-03-26 18:00:21,066 - INFO - 127.0.0.1 - - [26/Mar/2025 18:00:21] "GET /chatbot HTTP/1.1" 200 -
+2025-03-26 18:00:22,072 - INFO - 127.0.0.1 - - [26/Mar/2025 18:00:22] "GET /get-excel-templates HTTP/1.1" 200 -
+2025-03-26 18:00:22,085 - INFO - 127.0.0.1 - - [26/Mar/2025 18:00:22] "GET /get-excel-templates HTTP/1.1" 200 -
+2025-03-26 18:00:23,218 - INFO - file_path: C:\Users\Munes\PycharmProjects\Hackathon_Gen_AI_Explorer\data\genAI_Data.xlsx
+2025-03-26 18:00:23,231 - INFO - 127.0.0.1 - - [26/Mar/2025 18:00:23] "GET /get-rules?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-26 18:30:51,885 - INFO - 127.0.0.1 - - [26/Mar/2025 18:30:51] "GET / HTTP/1.1" 200 -
+2025-03-26 18:30:52,930 - INFO - 127.0.0.1 - - [26/Mar/2025 18:30:52] "GET /dashboard HTTP/1.1" 200 -
+2025-03-26 18:30:53,140 - INFO - 127.0.0.1 - - [26/Mar/2025 18:30:53] "GET /get-excel-templates HTTP/1.1" 200 -
+2025-03-26 18:30:56,223 - INFO - 127.0.0.1 - - [26/Mar/2025 18:30:56] "GET /data?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-26 18:31:26,662 - INFO - 127.0.0.1 - - [26/Mar/2025 18:31:26] "GET /new_rule HTTP/1.1" 200 -
+2025-03-26 18:31:26,731 - INFO - 127.0.0.1 - - [26/Mar/2025 18:31:26] "GET /chatbot HTTP/1.1" 200 -
+2025-03-26 18:31:27,729 - INFO - 127.0.0.1 - - [26/Mar/2025 18:31:27] "GET /get-excel-templates HTTP/1.1" 200 -
+2025-03-26 18:31:27,793 - INFO - 127.0.0.1 - - [26/Mar/2025 18:31:27] "GET /get-excel-templates HTTP/1.1" 200 -
+2025-03-26 18:31:28,744 - INFO - file_path: C:\Users\Munes\PycharmProjects\Hackathon_Gen_AI_Explorer\data\genAI_Data.xlsx
+2025-03-26 18:31:28,810 - INFO - 127.0.0.1 - - [26/Mar/2025 18:31:28] "GET /get-rules?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-26 18:31:31,579 - INFO - 127.0.0.1 - - [26/Mar/2025 18:31:31] "GET /datawithrules.html?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
+2025-03-26 18:31:33,205 - INFO - 127.0.0.1 - - [26/Mar/2025 18:31:33] "GET /filter-excel1?file=C:\\Users\\Munes\\PycharmProjects\\Hackathon_Gen_AI_Explorer\\data\\genAI_Data.xlsx HTTP/1.1" 200 -
