@@ -18,10 +18,10 @@ This project was inspired by the need to automate data validation and filtering 
 
 ## 🎥 Demo
 🔗 [Live Demo](#) (if applicable)  
-📹 [Video Demo](#) (if applicable)  
-🖼️ Screenshots:
+📹 [Video Demo](#) (if applicable)  Artifacts/Demo folder
+🖼️ Screenshots:  Added to PPT Artifacts/arch folder
 
-Added to PPT
+
 
 ## 💡 Inspiration
 This project was inspired by the need to automate data validation and filtering based on predefined rules without requiring exact matches. Many organizations deal with large datasets in Excel, where specific fields must adhere to certain compliance or formatting rules.
