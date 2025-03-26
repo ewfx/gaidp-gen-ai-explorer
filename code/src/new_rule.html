@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon 2025</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            overflow-x: auto;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #343a40;
+            padding-top: 65px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transition: transform 0.3s ease-in-out;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: margin-left 0.3s ease-in-out;
+        }
+        .hidden-sidebar {
+            transform: translateX(-250px);
+        }
+        .expanded-content {
+            margin-left: 0;
+        }
+        .toggle-btn {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            background-color: #343a40;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+          /* Chatbox button */
+        .chatbot-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Chatbox container */
+        .chatbot-container {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            display: none; /* Initially hidden */
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+
+        /* Chatbox header */
+        .chatbot-header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Chatbot iframe */
+        .chatbot-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .chat-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+    </style>
+</head>
+<body>
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div class="sidebar" id="sidebar">
+        <ul class="nav flex-column">
+            <li class="nav-item"><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a></li>
+            <li class="nav-item"><a href="{{ url_for('upload_file_page') }}" class="nav-link">Upload File</a></li>
+            <li class="nav-item"><a href="{{ url_for('new_rule') }}" class="nav-link">New Rule with New File</a></li>
+        </ul>
+    </div>
+    <main class="content" id="content">
+        <h5>See All Excel file rules and generate data based on that</h5>
+         <h5 style="color:red">Note: If you want to change the rules, please ask chatboat to re-generate rules</h5>
+         <div id="ruleForm">
+        <select id="excelTemplate" required>
+            <option value="">Select Excel Template</option>
+        </select>
+        <button class="btn btn-primary mt-2" onclick="verifyRules()">Verify Rules</button>
+        <label id="rowCountLabel" class="mt-2">Total Rows: 0</label>
+        <div id="rulesTable" class="mt-3"></div>
+         </div>
+         <h5 style="color:red">Note: These records based on excel selected in dropdown</h5>
+        <button id="showRecordsBtn" class="btn btn-success mt-2" style="display: none;" onclick="showRecords()">Show Records Based on Rules</button>
+
+
+         <button class="chatbot-btn" onclick="toggleChatbot()">💬 Chat - Set Rules</button>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header" onclick="toggleChatbot()">Chatbot ✖</div>
+        <iframe class="chatbot-iframe" src="{{ url_for('chatbot') }}"></iframe>
+    </div>
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle("hidden-sidebar");
+            document.getElementById("content").classList.toggle("expanded-content");
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(loadExcelTemplates, 1000);
+        });
+
+        function loadExcelTemplates() {
+            fetch('/get-excel-templates')
+                .then(response => response.json())
+                .then(data => {
+                    let dropdown = document.getElementById("excelTemplate");
+                    data.forEach(file => {
+                        let option = document.createElement("option");
+                        option.value = file.path;
+                        option.textContent = file.name;
+                        dropdown.appendChild(option);
+                    });
+                })
+                .catch(error => console.error("Error fetching Excel templates:", error));
+        }
+
+        function verifyRules() {
+            let selectedFile = document.getElementById("excelTemplate").value;
+            if (!selectedFile) {
+                alert("Please select an Excel template first.");
+                return;
+            }
+
+            fetch(`/get-rules?file=${encodeURIComponent(selectedFile)}`)
+                .then(response => response.json())
+                .then(data => {
+                let rowCount = 0; // Initialize row count
+                    if (!data || !data.columns || !data.rows) {
+                        document.getElementById("rulesTable").innerHTML = "<p class='text-danger'>Rules are not generated, please generate first.</p>";
+                         document.getElementById("showRecordsBtn").style.display = "none";
+                          document.getElementById("rowCountLabel").textContent = "Total Rules: 0"; // Set count to 0
+                         return;
+                    }
+                     rowCount = data.rows.length;
+                    let tableHTML = "<table class='table table-bordered'><thead><tr>";
+                    tableHTML += data.columns.map(col => `<th>${col}</th>`).join("");
+                    tableHTML += "</tr></thead><tbody>";
+                    data.rows.forEach(row => {
+                        tableHTML += "<tr>" + row.map(val => `<td>${val}</td>`).join("") + "</tr>";
+                    });
+                    tableHTML += "</tbody></table>";
+                    document.getElementById("rulesTable").innerHTML = tableHTML;
+                    document.getElementById("showRecordsBtn").style.display = "block";
+                    document.getElementById("rowCountLabel").textContent = "Total Rules: " + rowCount; // Update row count
+
+                })
+                .catch(error => console.error("Error fetching rules data:", error));
+        }
+
+           function showRecords() {
+            let selectedFile = document.getElementById("excelTemplate").value;
+            if (!selectedFile) {
+                alert("Please select an Excel template first.");
+                return;
+            }
+
+
+            window.open(`/datawithrules.html?file=${encodeURIComponent(selectedFile)}`, '_blank');
+        }
+
+         function toggleChatbot() {
+            let chatbot = document.getElementById("chatbot");
+            chatbot.style.display = (chatbot.style.display === "block") ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
