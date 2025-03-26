@@ -61,7 +61,7 @@ Reading data based on Rules
 ## 🏃 How to Run
 1. Clone the repository  
    ```sh
-   [git clone https://github.com/your-repo.git](https://github.com/ewfx/gaidp-gen-ai-explorer.git)
+  https://github.com/ewfx/gaidp-gen-ai-explorer.git
    ```
 2. Install dependencies  
    ```sh
