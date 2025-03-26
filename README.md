@@ -61,15 +61,21 @@ Reading data based on Rules
 ## 🏃 How to Run
 1. Clone the repository  
    ```sh
-   git clone https://github.com/your-repo.git
+   [git clone https://github.com/your-repo.git](https://github.com/ewfx/gaidp-gen-ai-explorer.git)
    ```
 2. Install dependencies  
    ```sh
-   npm install  # or pip install -r requirements.txt (for Python)
+   flask
+   pandas
+   google.generativeai
+   rapidfuzz
+   logging
+   flask_cors
    ```
 3. Run the project  
    ```sh
-   npm start  # or python app.py
+    python app.py
+    python Rules_Generator
    ```
 
 ## 🏗️ Tech Stack
